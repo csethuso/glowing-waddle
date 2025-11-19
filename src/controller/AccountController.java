@@ -1,5 +1,7 @@
 package controller;
 
+import dao.DaoFactory;
+import dao.AccountDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +22,8 @@ public class AccountController {
     private ObservableList<Account> accountList = FXCollections.observableArrayList();
     private Bank bank = CustomerController.getBank();
 
+    private AccountDAO adao = DaoFactory.getAccountDAO();
+
     @FXML
     public void initialize() {
         choiceAccountType.setItems(FXCollections.observableArrayList("Savings", "Cheque", "Investment"));
@@ -29,6 +33,21 @@ public class AccountController {
         colBalance.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(String.format("%.2f", c.getValue().getBalance())));
 
         tblAccounts.setItems(accountList);
+
+        // load existing accounts from DB
+        try {
+            for (Account a : adao.findAll()) {
+                accountList.add(a);
+                bank.addAccount(a);
+                // attach account to owner in bank if possible
+                Customer owner = a.getOwner();
+                if (owner != null) {
+                    owner.addAccount(a);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -60,6 +79,9 @@ public class AccountController {
                     showAlert("Error", "Invalid account type selected!");
                     return;
             }
+
+            // persist
+            adao.create(newAcc);
 
             customer.addAccount(newAcc);
             bank.addAccount(newAcc);

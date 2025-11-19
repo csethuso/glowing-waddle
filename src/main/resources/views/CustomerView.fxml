@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.CustomerController">
+    <children>
+        <VBox spacing="8" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+            <Label text="Customer Management" style="-fx-font-weight:bold; -fx-font-size:14px;" />
+            <HBox spacing="8">
+                <TextField fx:id="txtCustomerId" promptText="Customer ID" />
+                <TextField fx:id="txtFirstName" promptText="First Name" />
+                <TextField fx:id="txtLastName" promptText="Last Name" />
+            </HBox>
+            <HBox spacing="8">
+                <TextField fx:id="txtAddress" promptText="Address" />
+                <TextField fx:id="txtPhone" promptText="Phone" />
+                <TextField fx:id="txtEmail" promptText="Email" />
+                <Button text="Add" onAction="#addCustomer" />
+            </HBox>
+            <TableView fx:id="tblCustomers" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colName" text="Name" prefWidth="200" />
+                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="150" />
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -24,7 +24,7 @@ public class LoginController {
         // Simple hardcoded login for demo
         if (username.equals("admin") && password.equals("1234")) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DashboardView.fxml"));
                 Stage stage = (Stage) txtUsername.getScene().getWindow();
                 stage.setScene(new Scene(loader.load()));
                 stage.setTitle("Bank Dashboard");

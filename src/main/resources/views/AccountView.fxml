@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.AccountController">
+    <children>
+        <VBox spacing="8" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+            <Label text="Account Management" style="-fx-font-weight:bold; -fx-font-size:14px;" />
+            <HBox spacing="8">
+                <TextField fx:id="txtCustomerId" promptText="Customer ID" />
+                <ChoiceBox fx:id="choiceAccountType" />
+                <TextField fx:id="txtAccountNumber" promptText="Account Number" />
+                <TextField fx:id="txtOpeningBalance" promptText="Opening Balance" />
+                <Button text="Create Account" onAction="#createAccount"/>
+            </HBox>
+            <HBox spacing="8">
+                <TextField fx:id="txtEmployerName" promptText="Employer name (for Cheque)" />
+                <TextField fx:id="txtEmployerAddr" promptText="Employer address" />
+            </HBox>
+            <TableView fx:id="tblAccounts" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colAccNo" text="Account No" prefWidth="150" />
+                    <TableColumn fx:id="colAccType" text="Type" prefWidth="120" />
+                    <TableColumn fx:id="colBalance" text="Balance" prefWidth="120" />
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>

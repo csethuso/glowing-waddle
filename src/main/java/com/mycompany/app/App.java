@@ -5,8 +5,25 @@
 
 package com.mycompany.app;
 
-public class App {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class App extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        // initialize embedded DB and schema
+        dao.DBInit.init();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        stage.setTitle("Banking System");
+        stage.show();
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello Remote World!");
+        launch(args);
     }
 }

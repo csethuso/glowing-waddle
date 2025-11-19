@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DashboardController">
+    <children>
+        <VBox spacing="10" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <Label text="Dashboard" style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+            <HBox spacing="10">
+                <Button fx:id="btnCustomer" text="Customers" onAction="#openCustomers" />
+                <Button fx:id="btnAccount" text="Accounts" onAction="#openAccounts" />
+                <Button fx:id="btnTransaction" text="Transactions" onAction="#openTransactions" />
+                <Button text="Logout" onAction="#logout" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
