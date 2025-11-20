@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.CustomerDashboardController"
+      alignment="TOP_CENTER"
+      spacing="15"
+      style="-fx-padding: 20; -fx-background-color: #f7f9fb;">
+
+    <!-- Header Section -->
+    <Label fx:id="nameLabel"
+           text="Welcome, Customer!"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #007bff;"/>
+
+    <!-- Account Application Section -->
+    <TitledPane text="Apply for New Account" expanded="true" style="-fx-font-weight: bold;">
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Select Account Type:"/>
+                <ComboBox fx:id="applyChoice" prefWidth="150"/>
+                <Button text="Apply"
+                        onAction="#onApplyAccount"
+                        style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Accounts Display Section -->
+    <TitledPane text="Your Accounts" expanded="true">
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextArea fx:id="accountDisplay"
+                      prefRowCount="6"
+                      prefWidth="450"
+                      wrapText="true"
+                      editable="false"
+                      style="-fx-control-inner-background: #eef2f5; -fx-font-family: monospace;"/>
+        </VBox>
+    </TitledPane>
+
+    <!-- Deposit Section -->
+    <TitledPane text="Deposit Funds" expanded="false">
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Account:"/>
+                <ComboBox fx:id="depositAccountChoice" prefWidth="160"/>
+                <Label text="Amount:"/>
+                <TextField fx:id="depositAmount" prefWidth="100"/>
+                <Button text="Deposit"
+                        onAction="#onDeposit"
+                        style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Withdraw Section -->
+    <TitledPane text="Withdraw Funds" expanded="false">
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Account:"/>
+                <ComboBox fx:id="withdrawAccountChoice" prefWidth="160"/>
+                <Label text="Amount:"/>
+                <TextField fx:id="withdrawAmount" prefWidth="100"/>
+                <Button text="Withdraw"
+                        onAction="#onWithdraw"
+                        style="-fx-background-color: #ffc107; -fx-text-fill: black;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Transfer Section -->
+    <TitledPane text="Transfer Funds" expanded="false">
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="From:"/>
+                <ComboBox fx:id="transferAccountChoice" prefWidth="160"/>
+                <Label text="To Account:"/>
+                <TextField fx:id="transferToField" promptText="Target Account No" prefWidth="150"/>
+                <Label text="Amount:"/>
+                <TextField fx:id="transferAmountField" prefWidth="100"/>
+                <Button text="Transfer"
+                        onAction="#onTransfer"
+                        style="-fx-background-color: #17a2b8; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Investment Section (added) -->
+    <TitledPane text="Investment" expanded="false">
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Account:"/>
+                <ComboBox fx:id="investmentAccountChoice" prefWidth="160"/>
+                <Label text="Amount:"/>
+                <TextField fx:id="investmentAmountField" prefWidth="120" promptText="Amount to invest"/>
+                <Button text="Invest"
+                        onAction="#onInvest"
+                        style="-fx-background-color: #6f42c1; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Transactions Section (added) -->
+    <TitledPane text="Transactions" expanded="false">
+        <VBox spacing="8" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TableView fx:id="transactionsTable" prefWidth="660" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="140"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="120"/>
+                    <TableColumn fx:id="colAmount" text="Amount" prefWidth="120"/>
+                    <TableColumn fx:id="colBalance" text="Balance" prefWidth="120"/>
+                    <TableColumn fx:id="colDesc" text="Description" prefWidth="160"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <!-- Bottom Action Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="View Transactions"
+                style="-fx-background-color: #343a40; -fx-text-fill: white;"
+                onAction="#onViewTransactions"/>
+
+        <Button text="Logout"
+                style="-fx-background-color: #dc3545; -fx-text-fill: white;"
+                onAction="#onLogout"/>
+    </HBox>
+
+</VBox>
