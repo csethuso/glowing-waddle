@@ -584,3 +584,26 @@ INSERT INTO customers (full_name, username, password_hash, email, role, status) 
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
 	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-11-23 16:59:22.674776+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CUSTOMERS" not found (this database is empty); SQL statement:
+    SELECT
+      SUM(CASE WHEN status='PENDING' THEN 1 ELSE 0 END) AS pending,
+      SUM(CASE WHEN status='APPROVED' THEN 1 ELSE 0 END) AS approved,
+      SUM(CASE WHEN status='REJECTED' THEN 1 ELSE 0 END) AS rejected
+    FROM customers
+ [42104-224]
+2025-11-23 16:59:41.343770+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNTS" not found (this database is empty); SQL statement:
+SELECT * FROM accounts WHERE status='PENDING' [42104-224]
+2025-11-23 17:00:00.541886+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNTS" not found (this database is empty); SQL statement:
+UPDATE accounts SET status='ACTIVE' WHERE id=? [42104-224]
+2025-11-23 17:00:29.610253+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNTS" not found (this database is empty); SQL statement:
+UPDATE accounts SET status='ACTIVE' WHERE id=? [42104-224]
+2025-11-23 17:01:25.289868+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CUSTOMERS" not found (this database is empty); SQL statement:
+UPDATE customers SET status = 'APPROVED' WHERE id = ? [42104-224]
+2025-11-23 17:01:36.986256+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNTS" not found (this database is empty); SQL statement:
+UPDATE accounts SET status='ACTIVE' WHERE id=? [42104-224]
